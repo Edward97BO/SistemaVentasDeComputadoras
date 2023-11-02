@@ -8,6 +8,7 @@ import { PedidosModule } from './pedidos/pedidos.module';
 import { LineaPedidosModule } from './linea-pedidos/linea-pedidos.module';
 import { LineapedidosModule } from './lineapedidos/lineapedidos.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
+import { ProductosModule } from './productos/productos.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
 
 @Module({
@@ -29,6 +30,7 @@ import { SolicitudesModule } from './solicitudes/solicitudes.module';
     LineaPedidosModule,
     LineapedidosModule,
     SolicitudesModule,
+    ProductosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
