@@ -13,58 +13,55 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class SolicitudesService {
   constructor(
     @InjectRepository(Solicitud)
-    private SolicitudeRepository: Repository<Solicitud>,
+    private solicitudRepository: Repository<Solicitud>,
   ) {}
 
-  async create(createSolicitudeDto: CreateSolicitudDto): Promise<Solicitud> {
-    const existeSolicitude = await this.SolicitudeRepository.findOneBy({
-      idSolicitud: createSolicitudeDto.idSolicitud,
+  async create(createSolicitudDto: CreateSolicitudDto): Promise<Solicitud> {
+    const existeSolicitud = await this.solicitudRepository.findOneBy({
+      idSolicitud: createSolicitudDto.idSolicitud,
     });
 
-    if (existeSolicitude) {
+    if (existeSolicitud) {
       throw new ConflictException('La Solicitud ya existe');
     }
+    const solicitud = new Solicitud();
+    idSolicitud: createSolicitudDto.idSolicitud.trim();
+    idProducto: createSolicitudDto.idProducto.trim();
+    cantidad: createSolicitudDto.cantidad.trim();
+    precio: createSolicitudDto.precio.trim();
 
-    const Solicitude = new Solicitude();
-    Solicitude.idSolicitud = createSolicitudeDto.idSolicitud.trim();
-    Solicitude.idProducto = createSolicitudeDto.idProducto.trim();
-    Solicitude.cantidad = createSolicitudeDto.cantidad.trim();
-    Solicitude.precio = createSolicitudeDto.precio.trim();
-
-    const SolicitudeBd = await this.SolicitudeRepository.save(Solicitude);
-    delete Solicitude.clave;
-    return SolicitudeBd;
+    return solicitud;
   }
 
   async findAll(): Promise<Solicitud[]> {
-    return this.SolicitudeRepository.find();
+    return this.solicitudRepository.find();
   }
 
   async findOne(id: number): Promise<Solicitud> {
-    const Solicitude = await this.SolicitudeRepository.findOneBy({ id });
-    if (!Solicitude) {
+    const solicitud = await this.solicitudRepository.findOneBy({ id });
+    if (!solicitud) {
       throw new NotFoundException(`No existe la Solicitud ${id}`);
     }
-    return Solicitude;
+    return solicitud;
   }
 
   async update(
     id: number,
-    updateSolicitudeDto: UpdateSolicitudDto,
+    updateSolicitudesDto: UpdateSolicitudDto,
   ): Promise<Solicitud> {
-    const Solicitude = await this.SolicitudeRepository.findOneBy({ id });
-    if (!Solicitude) {
+    const solicitudes = await this.solicitudRepository.findOneBy({ id });
+    if (!solicitudes) {
       throw new NotFoundException(`No existe la solicitud ${id}`);
     }
-    const SolicitudeUpdate = Object.assign(Solicitude, updateSolicitudeDto);
-    return this.SolicitudeRepository.save(SolicitudeUpdate);
+    const solicitudUpdate = Object.assign(solicitudes, updateSolicitudesDto);
+    return this.solicitudRepository.save(solicitudUpdate);
   }
 
   async remove(id: number) {
-    const Solicitude = await this.SolicitudeRepository.findOneBy({ id });
+    const Solicitude = await this.solicitudRepository.findOneBy({ id });
     if (!Solicitude) {
       throw new NotFoundException(`No existe el Solicitude ${id}`);
     }
-    return this.SolicitudeRepository.delete(id);
+    return this.solicitudRepository.delete(id);
   }
 }

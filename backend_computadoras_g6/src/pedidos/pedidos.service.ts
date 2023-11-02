@@ -22,7 +22,7 @@ export class PedidosService {
     });
 
     if (existePedido) {
-      throw new ConflictException('La Pedido ya existe');
+      throw new ConflictException('El Pedido ya existe');
     }
 
     return this.pedidoRepository.save({
