@@ -13,11 +13,11 @@ import { Repository } from 'typeorm';
 export class PedidosService {
   constructor(
     @InjectRepository(Pedido)
-    private PedidoRepository: Repository<Pedido>,
+    private pedidoRepository: Repository<Pedido>,
   ) {}
 
   async create(createPedidoDto: CreatePedidoDto): Promise<Pedido> {
-    const existePedido = await this.PedidoRepository.findOneBy({
+    const existePedido = await this.pedidoRepository.findOneBy({
       idPedido: createPedidoDto.idPedido,
     });
 
@@ -25,40 +25,37 @@ export class PedidosService {
       throw new ConflictException('La Pedido ya existe');
     }
 
-    const Pedido = new Pedido();
-    Pedido.idPedido = createPedidoDto.idPedido.trim();
-    Pedido.estado = createPedidoDto.estado.trim();
-
-    const PedidoBd = await this.PedidoRepository.save(Pedido);
-    delete Pedido.clave;
-    return PedidoBd;
+    return this.pedidoRepository.save({
+      idPedido: createPedidoDto.idPedido.trim(),
+      estado: createPedidoDto.estado.trim(),
+    });
   }
 
   async findAll(): Promise<Pedido[]> {
-    return this.PedidoRepository.find();
+    return this.pedidoRepository.find();
   }
 
   async findOne(id: number): Promise<Pedido> {
-    const Pedidoe = await this.PedidoRepository.findOneBy({ id });
-    if (!Pedidoe) {
-      throw new NotFoundException(`No existe la Pedido ${id}`);
+    const pedido = await this.pedidoRepository.findOneBy({ id });
+    if (!pedido) {
+      throw new NotFoundException(`No existe el Pedido ${id}`);
     }
-    return Pedidoe;
+    return pedido;
   }
   async update(id: number, updatePedidoDto: UpdatePedidoDto): Promise<Pedido> {
-    const Pedido = await this.PedidoRepository.findOneBy({ id });
-    if (!Pedido) {
-      throw new NotFoundException(`No existe la Pedido ${id}`);
+    const pedido = await this.pedidoRepository.findOneBy({ id });
+    if (!pedido) {
+      throw new NotFoundException(`No existe el Pedido ${id}`);
     }
     const PedidoUpdate = Object.assign(Pedido, updatePedidoDto);
-    return this.PedidoRepository.save(PedidoUpdate);
+    return this.pedidoRepository.save(PedidoUpdate);
   }
 
   async remove(id: number) {
-    const Pedido = await this.PedidoRepository.findOneBy({ id });
-    if (!Pedido) {
+    const pedido = await this.pedidoRepository.findOneBy({ id });
+    if (!pedido) {
       throw new NotFoundException(`No existe el Pedido ${id}`);
     }
-    return this.PedidoRepository.delete(id);
+    return this.pedidoRepository.delete(id);
   }
 }
