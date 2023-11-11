@@ -11,7 +11,7 @@ export class Solicitud {
   idProducto: string;
 
   @Column({ type: 'varchar', length: 60, nullable: false })
-  cantidad: string;
+  cantidad: number;
 
   @Column({ name: 'DECIMAL(10,2)', nullable: false })
   precio: number;

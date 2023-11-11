@@ -27,8 +27,8 @@ export class SolicitudesService {
     const solicitud = new Solicitud();
     idSolicitud: createSolicitudDto.idSolicitud.trim();
     idProducto: createSolicitudDto.idProducto.trim();
-    cantidad: createSolicitudDto.cantidad.trim();
-    precio: createSolicitudDto.precio.trim();
+    cantidad: createSolicitudDto.cantidad;
+    precio: createSolicitudDto.precio;
 
     return solicitud;
   }
@@ -47,20 +47,20 @@ export class SolicitudesService {
 
   async update(
     id: number,
-    updateSolicitudesDto: UpdateSolicitudDto,
+    updateSolicitudDto: UpdateSolicitudDto,
   ): Promise<Solicitud> {
-    const solicitudes = await this.solicitudRepository.findOneBy({ id });
-    if (!solicitudes) {
+    const solicitud = await this.solicitudRepository.findOneBy({ id });
+    if (!solicitud) {
       throw new NotFoundException(`No existe la solicitud ${id}`);
     }
-    const solicitudUpdate = Object.assign(solicitudes, updateSolicitudesDto);
+    const solicitudUpdate = Object.assign(solicitud, updateSolicitudDto);
     return this.solicitudRepository.save(solicitudUpdate);
   }
 
   async remove(id: number) {
-    const Solicitude = await this.solicitudRepository.findOneBy({ id });
-    if (!Solicitude) {
-      throw new NotFoundException(`No existe el Solicitude ${id}`);
+    const Solicitud = await this.solicitudRepository.findOneBy({ id });
+    if (!Solicitud) {
+      throw new NotFoundException(`No existe la Solicitud ${id}`);
     }
     return this.solicitudRepository.delete(id);
   }

@@ -24,7 +24,7 @@ export class CreateSolicitudDto {
   @MaxLength(60, {
     message: 'El campo cantidad no debe ser mayor a 60 caracteres',
   })
-  readonly cantidad: string;
+  readonly cantidad: number;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo precio no debe ser vacío' })
@@ -32,5 +32,5 @@ export class CreateSolicitudDto {
   @MaxLength(50, {
     message: 'El campo precio no debe ser mayor a 50 caracteres',
   })
-  readonly precio: string;
+  readonly precio: number;
 }
