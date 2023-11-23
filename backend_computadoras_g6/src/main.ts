@@ -15,6 +15,12 @@ async function bootstrap() {
     .setDescription('Backend de "IT Pro"')
     .setVersion('1.0')
     .addTag('clientes')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      in: 'header',
+    })
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('apidoc', app, document);

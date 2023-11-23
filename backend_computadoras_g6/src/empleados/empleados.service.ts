@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { CreateEmpleadoDto } from './dto/create-empleado.dto';
 import { UpdateEmpleadoDto } from './dto/update-empleado.dto';
@@ -31,6 +32,7 @@ export class EmpleadosService {
     empleado.nombre = createEmpleadoDto.nombre.trim();
     empleado.apellidos = createEmpleadoDto.apellidos.trim();
     empleado.email = createEmpleadoDto.email.trim();
+    empleado.telefono = createEmpleadoDto.telefono.trim();
     empleado.direccion = createEmpleadoDto.direccion.trim();
     empleado.puesto = createEmpleadoDto.puesto.trim();
 
@@ -69,5 +71,21 @@ export class EmpleadosService {
       throw new NotFoundException(`No existe el Empleado ${id}`);
     }
     return this.empleadoRepository.delete(id);
+  }
+
+  async validate(usuario: string, clave: string): Promise<Empleado> {
+    const usuarioOk = await this.empleadoRepository.findOne({
+      where: { usuario },
+      select: ['id', 'usuario', 'clave', 'nombre', 'apellidos', 'email'],
+    });
+
+    if (!usuarioOk) throw new NotFoundException('Usuario inexistente');
+
+    if (!(await usuarioOk?.validatePassword(clave))) {
+      throw new UnauthorizedException('Clave incorrecta');
+    }
+
+    delete usuarioOk.clave;
+    return usuarioOk;
   }
 }
