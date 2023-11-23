@@ -8,6 +8,7 @@ import { UpdatePedidoDto } from './dto/update-pedido.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Pedido } from './entities/pedido.entity';
 import { Repository } from 'typeorm';
+import { Cliente } from 'src/clientes/entities/cliente.entity';
 
 @Injectable()
 export class PedidosService {
@@ -50,8 +51,9 @@ export class PedidosService {
     if (!pedido) {
       throw new NotFoundException(`No existe el Pedido ${id}`);
     }
-    const PedidoUpdate = Object.assign(Pedido, updatePedidoDto);
-    return this.pedidoRepository.save(PedidoUpdate);
+    const pedidoUpdate = Object.assign(pedido, updatePedidoDto);
+    pedidoUpdate.cliente = { id: updatePedidoDto.idCliente } as Cliente;
+    return this.pedidoRepository.save(pedidoUpdate);
   }
 
   async remove(id: number) {

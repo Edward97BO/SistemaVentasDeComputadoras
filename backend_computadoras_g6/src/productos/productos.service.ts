@@ -24,15 +24,13 @@ export class ProductosService {
     if (existeProducto) {
       throw new ConflictException('El producto ya existe');
     }
-
-    const producto = new Producto();
-    producto.nombre = createProductoDto.nombre.trim();
-    producto.descripcion = createProductoDto.descripcion.trim();
-    producto.categoria = createProductoDto.categoria.trim();
-    producto.precio = createProductoDto.precio;
-    producto.stock = createProductoDto.stock;
-
-    return producto;
+    return this.productoRepository.save({
+      nombre: createProductoDto.nombre.trim(),
+      descripcion: createProductoDto.descripcion.trim(),
+      categoria: createProductoDto.categoria.trim(),
+      precio: createProductoDto.precio,
+      stock: createProductoDto.stock,
+    });
   }
 
   async findAll(): Promise<Producto[]> {

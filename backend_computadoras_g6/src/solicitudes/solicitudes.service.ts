@@ -8,6 +8,8 @@ import { UpdateSolicitudDto } from './dto/update-solicitud.dto';
 import { Solicitud } from './entities/solicitud.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Producto } from 'src/productos/entities/producto.entity';
+import { Pedido } from 'src/pedidos/entities/pedido.entity';
 
 @Injectable()
 export class SolicitudesService {
@@ -20,7 +22,7 @@ export class SolicitudesService {
     const existeSolicitud = await this.solicitudRepository.findOneBy({
       codigo: createSolicitudDto.codigo,
       pedido: { id: createSolicitudDto.idPedido },
-      productos: { id: createSolicitudDto.idProducto },
+      producto: { id: createSolicitudDto.idProducto },
     });
 
     if (existeSolicitud) {
@@ -31,7 +33,7 @@ export class SolicitudesService {
       cantidad: createSolicitudDto.cantidad,
       precio: createSolicitudDto.precio,
       pedido: { id: createSolicitudDto.idPedido },
-      productos: { id: createSolicitudDto.idProducto },
+      producto: { id: createSolicitudDto.idProducto },
     });
   }
 
@@ -56,12 +58,16 @@ export class SolicitudesService {
       throw new NotFoundException(`No existe la solicitud ${id}`);
     }
     const solicitudUpdate = Object.assign(solicitud, updateSolicitudDto);
+    solicitudUpdate.pedido = { id: updateSolicitudDto.idPedido } as Pedido;
+    solicitudUpdate.producto = {
+      id: updateSolicitudDto.idProducto,
+    } as Producto;
     return this.solicitudRepository.save(solicitudUpdate);
   }
 
   async remove(id: number) {
-    const Solicitud = await this.solicitudRepository.findOneBy({ id });
-    if (!Solicitud) {
+    const solicitud = await this.solicitudRepository.findOneBy({ id });
+    if (!solicitud) {
       throw new NotFoundException(`No existe la Solicitud ${id}`);
     }
     return this.solicitudRepository.delete(id);

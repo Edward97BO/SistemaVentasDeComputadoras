@@ -2,6 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -12,11 +13,6 @@ import { Producto } from 'src/productos/entities/producto.entity';
 export class Solicitud {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  idSolicitud: string;
-
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  idProducto: string;
 
   @Column({ type: 'varchar', length: 10, nullable: false })
   codigo: string;
@@ -31,7 +27,7 @@ export class Solicitud {
   @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
   pedido: Pedido;
 
-  @OneToOne(() => Producto, (producto) => producto.solicitudes)
+  @OneToMany(() => Producto, (producto) => producto.solicitudes)
   @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
-  productos: Pedido;
+  producto: Producto;
 }

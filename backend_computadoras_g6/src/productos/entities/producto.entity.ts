@@ -21,6 +21,6 @@ export class Producto {
   @Column({ type: 'varchar', length: 100, nullable: false })
   categoria: string;
 
-  @ManyToOne(() => Solicitud, (solicitud) => solicitud.productos)
+  @ManyToOne(() => Solicitud, (solicitud) => solicitud.producto)
   solicitudes: Solicitud[];
 }
