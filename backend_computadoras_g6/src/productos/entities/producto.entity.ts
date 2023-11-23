@@ -11,10 +11,10 @@ export class Producto {
   @Column({ type: 'varchar', length: 300, nullable: false })
   descripcion: string;
 
-  @Column({ type: 'decimal', length: 100, nullable: false })
+  @Column({ type: 'decimal', nullable: false })
   precio: number;
 
-  @Column({ type: 'int', length: 100, nullable: false })
+  @Column({ type: 'int', nullable: false })
   stock: number;
 
   @Column({ type: 'varchar', length: 100, nullable: false })

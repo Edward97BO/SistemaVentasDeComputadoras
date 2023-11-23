@@ -1,7 +1,9 @@
+import { Pedido } from 'src/pedidos/entities/pedido.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,8 +25,8 @@ export class Cliente {
   @Column({ type: 'varchar', length: 50, nullable: false })
   email: string;
 
-  @Column({ type: 'int', length: 10, nullable: false })
-  telefono: number;
+  @Column({ type: 'varchar', length: 15, nullable: false })
+  telefono: string;
 
   @Column({ type: 'varchar', length: 200, nullable: false })
   direccion: string;
@@ -37,4 +39,7 @@ export class Cliente {
 
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
+
+  @OneToMany(() => Pedido, (pedido) => pedido.cliente)
+  pedidos: Pedido[];
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 
 export class CreateClienteDto {
   @ApiProperty()
@@ -35,8 +35,12 @@ export class CreateClienteDto {
   readonly email: string;
 
   @ApiProperty()
-  @IsNumber({}, { message: 'El campo teléfono debe ser de tipo numérico' })
-  readonly telefono: number;
+  @IsNotEmpty({ message: 'El campo teléfono no debe ser vacío' })
+  @IsString({ message: 'El campo teléfono debe ser de tipo cadena' })
+  @MaxLength(200, {
+    message: 'El campo teléfono no debe ser mayor a 15 caracteres',
+  })
+  readonly telefono: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo dirección no debe ser vacío' })

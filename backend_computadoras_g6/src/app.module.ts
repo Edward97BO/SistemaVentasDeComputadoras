@@ -5,12 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ClientesModule } from './clientes/clientes.module';
 import { PedidosModule } from './pedidos/pedidos.module';
-import { LineaPedidosModule } from './linea-pedidos/linea-pedidos.module';
-import { LineapedidosModule } from './lineapedidos/lineapedidos.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
-import { SolicitudesModule } from './solicitudes/solicitudes.module';
 
 @Module({
   imports: [
@@ -28,8 +25,6 @@ import { SolicitudesModule } from './solicitudes/solicitudes.module';
     }),
     ClientesModule,
     PedidosModule,
-    LineaPedidosModule,
-    LineapedidosModule,
     SolicitudesModule,
     ProductosModule,
     EmpleadosModule,

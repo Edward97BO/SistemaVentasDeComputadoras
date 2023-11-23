@@ -1,15 +1,25 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, MaxLength } from 'class-validator';
-import { IsNotEmpty } from 'class-validator/types/decorator/common/IsNotEmpty';
+import {
+  IsDefined,
+  IsNumber,
+  IsString,
+  MaxLength,
+  IsNotEmpty,
+} from 'class-validator';
 
 export class CreatePedidoDto {
   @ApiProperty()
-  @IsNotEmpty({ message: 'El id pedido no debe ser vacío' })
-  @IsString({ message: 'El id pedido debe ser de tipo cadena' })
-  @MaxLength(100, {
-    message: 'El id pedido no debe ser mayor a 100 caracteres',
+  @IsDefined({ message: 'El campo idCliente debe estar definido' })
+  @IsNumber({}, { message: 'El campo idCliente debe ser de tipo numérico' })
+  readonly idCliente: number;
+
+  @ApiProperty()
+  @IsNotEmpty({ message: 'El campo Código no debe ser vacío' })
+  @IsString({ message: 'El campo Código debe ser de tipo cadena' })
+  @MaxLength(10, {
+    message: 'El campo Código no debe ser mayor a 10 caracteres',
   })
-  readonly idPedido: string;
+  readonly codigo: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El estado no debe ser vacío' })

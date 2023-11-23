@@ -18,7 +18,7 @@ export class PedidosService {
 
   async create(createPedidoDto: CreatePedidoDto): Promise<Pedido> {
     const existePedido = await this.pedidoRepository.findOneBy({
-      idPedido: createPedidoDto.idPedido,
+      codigo: createPedidoDto.codigo,
     });
 
     if (existePedido) {
@@ -26,7 +26,8 @@ export class PedidosService {
     }
 
     return this.pedidoRepository.save({
-      idPedido: createPedidoDto.idPedido.trim(),
+      idCliente: createPedidoDto.idCliente,
+      codigo: createPedidoDto.codigo.trim(),
       estado: createPedidoDto.estado.trim(),
     });
   }
