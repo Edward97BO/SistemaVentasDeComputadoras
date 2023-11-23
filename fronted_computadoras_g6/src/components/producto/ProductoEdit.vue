@@ -30,8 +30,11 @@ async function editarProducto() {
 
 async function getProducto() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(nombre.value = response.data.nombre), (descripcion.value = response.data.descripcion), (precio.value = response.data.precio),
-    (stock.value = response.data.stock),(categoria.value = response.data.categoria)
+    ;(nombre.value = response.data.nombre),
+      (descripcion.value = response.data.descripcion),
+      (precio.value = response.data.precio),
+      (stock.value = response.data.stock),
+      (categoria.value = response.data.categoria)
   })
 }
 
@@ -87,20 +90,17 @@ onMounted(() => {
           <label for="precio">Precio</label>
         </div>
         <div class="form-floating">
-          <input type="number" 
-          class="form-control" 
-          v-model="stock" 
-          placeholder="Stock" 
-          required />
+          <input type="number" class="form-control" v-model="stock" placeholder="Stock" required />
           <label for="stock">Stock</label>
         </div>
         <div class="form-floating">
-          <select 
-          type="text"
-          class="form-control"
-           v-model="categoria" 
-           placeholder="Categoria" 
-           required>
+          <select
+            type="text"
+            class="form-control"
+            v-model="categoria"
+            placeholder="Categoria"
+            required
+          >
             <option value="Periferico">Periférico</option>
             <option value="Silla">Silla Gamer</option>
             <option value="Hadware">Hadware</option>
@@ -110,7 +110,8 @@ onMounted(() => {
           <label for="categoria">Categoría</label>
         </div>
         <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <button type="submit" class="btn btn-primary btn-lg">
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /></button>
         </div>
       </form>
     </div>
@@ -121,4 +122,3 @@ onMounted(() => {
 </template>
 
 <style></style>
-

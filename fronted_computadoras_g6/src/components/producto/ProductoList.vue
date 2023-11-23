@@ -43,7 +43,9 @@ onMounted(() => {
     <div class="row">
       <h2>Lista de Productos</h2>
       <div class="col-12">
-        <RouterLink to="/productos/crear">Crear Nuevo</RouterLink>
+        <RouterLink to="/productos/crear">
+          <font-awesome-icon icon="fa-solid fa-plus" />
+          Crear Nuevo</RouterLink>
       </div>
     </div>
 
@@ -69,8 +71,12 @@ onMounted(() => {
             <td>{{ producto.stock }}</td>
             <td>{{ producto.categoria }}</td>
             <td>
-              <button class="btn btn-link" @click="toEdit(producto.id)">Editar</button>
-              <button class="btn btn-link" @click="toDelete(producto.id)">Eliminar</button>
+              <button class="btn text-success" @click="toEdit(producto.id)">
+                <font-awesome-icon icon="fa-solid fa-edit" /> 
+              </button>
+              <button class="btn text-danger" @click="toDelete(producto.id)">
+                <font-awesome-icon icon="fa-solid fa-trash" />
+              </button>
             </td>
           </tr>
         </tbody>

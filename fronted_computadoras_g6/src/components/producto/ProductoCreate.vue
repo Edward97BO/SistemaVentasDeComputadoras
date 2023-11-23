@@ -97,7 +97,8 @@ function goBack() {
           <label for="categoria">Categoría</label>
         </div>
         <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg">Crear</button>
+          <button type="submit" class="btn btn-primary btn-lg">
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /></button>
         </div>
       </form>
     </div>
