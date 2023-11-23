@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
-
-const location = useRoute();
+import { useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores/index'
+const authStore = useAuthStore()
+const location = useRoute()
 </script>
 
 <template>
@@ -18,13 +19,17 @@ const location = useRoute();
     </div>
   </header>
 
-  <nav class="navbar navbar-expand-lg"
-  :style = "'background-color:' + (location.path != '/' ? 'black': '')">
+  <nav
+    class="navbar navbar-expand-lg"
+    :style="'background-color:' + (location.path != '/' ? 'black' : '')"
+  >
     <div class="container">
       <a class="navbar-brand" href="index.html"> IT Pro </a>
 
-      <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
-
+      <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-none ms-auto me-4"
+        >Iniciar Sesión</RouterLink
+      >
+      <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-none ms-auto me-4">Salir</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -43,7 +48,7 @@ const location = useRoute();
             <a class="nav-link click-scroll" href="#section_1">Inicio</a>
           </li> -->
           <li class="nav-item">
-            <RouterLink to="/" class="nav-link click-scroll" >Inicio</RouterLink>
+            <RouterLink to="/" class="nav-link click-scroll">Inicio</RouterLink>
           </li>
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
@@ -64,12 +69,16 @@ const location = useRoute();
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_6">Contacto</a>
           </li>
-          <li class="nav-item">
-            <RouterLink to="/productos" class="nav-link click-scroll" >Productos</RouterLink>
-          </li>
+          <slot v-if="authStore.token">
+            <li class="nav-item">
+              <RouterLink to="/productos" class="nav-link click-scroll">Productos</RouterLink>
+            </li>
+          </slot>
         </ul>
-
-        <a href="ticket.html" class="btn custom-btn d-lg-block d-none">Iniciar Sesión</a>
+        <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-block d-none"
+          >Iniciar Sesión</RouterLink
+        >
+        <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none">Salir</a>
       </div>
     </div>
   </nav>

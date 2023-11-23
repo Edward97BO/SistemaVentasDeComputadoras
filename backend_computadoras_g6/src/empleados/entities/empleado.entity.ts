@@ -2,8 +2,10 @@ import {
   BeforeInsert,
   BeforeUpdate,
   Column,
+  CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
@@ -35,6 +37,12 @@ export class Empleado {
 
   @Column('varchar', { length: 100 })
   puesto: string;
+
+  @CreateDateColumn({ name: 'fecha_creacion' })
+  fechaCreacion: Date;
+
+  @UpdateDateColumn({ name: 'fecha_modificacion' })
+  fechaModificacion: Date;
 
   @BeforeInsert()
   @BeforeUpdate()
