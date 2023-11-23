@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Solicitud } from 'src/solicitudes/entities/solicitud.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('productos')
 export class Producto {
@@ -19,4 +20,7 @@ export class Producto {
 
   @Column({ type: 'varchar', length: 100, nullable: false })
   categoria: string;
+
+  @ManyToOne(() => Solicitud, (solicitud) => solicitud.productos)
+  solicitudes: Solicitud[];
 }

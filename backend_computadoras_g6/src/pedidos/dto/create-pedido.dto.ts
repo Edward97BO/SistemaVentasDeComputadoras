@@ -9,8 +9,8 @@ import {
 
 export class CreatePedidoDto {
   @ApiProperty()
-  @IsDefined({ message: 'El campo idCliente debe estar definido' })
-  @IsNumber({}, { message: 'El campo idCliente debe ser de tipo numérico' })
+  @IsDefined({ message: 'El campo Cliente debe estar definido' })
+  @IsNumber({}, { message: 'El campo Cliente debe ser de tipo numérico' })
   readonly idCliente: number;
 
   @ApiProperty()

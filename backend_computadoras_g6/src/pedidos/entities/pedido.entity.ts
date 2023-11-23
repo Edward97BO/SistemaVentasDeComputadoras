@@ -4,9 +4,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Cliente } from 'src/clientes/entities/cliente.entity';
+import { Solicitud } from 'src/solicitudes/entities/solicitud.entity';
 
 @Entity('pedidos')
 export class Pedido {
@@ -25,4 +27,7 @@ export class Pedido {
   @ManyToOne(() => Cliente, (cliente) => cliente.pedidos)
   @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
   cliente: Cliente;
+
+  @OneToOne(() => Solicitud, (solicitud) => solicitud.pedido)
+  solicitudes: Solicitud[];
 }

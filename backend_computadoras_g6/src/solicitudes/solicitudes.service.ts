@@ -18,19 +18,21 @@ export class SolicitudesService {
 
   async create(createSolicitudDto: CreateSolicitudDto): Promise<Solicitud> {
     const existeSolicitud = await this.solicitudRepository.findOneBy({
-      idSolicitud: createSolicitudDto.idSolicitud,
+      codigo: createSolicitudDto.codigo,
+      pedido: { id: createSolicitudDto.idPedido },
+      productos: { id: createSolicitudDto.idProducto },
     });
 
     if (existeSolicitud) {
       throw new ConflictException('La Solicitud ya existe');
     }
-    const solicitud = new Solicitud();
-    idSolicitud: createSolicitudDto.idSolicitud.trim();
-    idProducto: createSolicitudDto.idProducto.trim();
-    cantidad: createSolicitudDto.cantidad;
-    precio: createSolicitudDto.precio;
-
-    return solicitud;
+    return this.solicitudRepository.save({
+      codigo: createSolicitudDto.codigo.trim(),
+      cantidad: createSolicitudDto.cantidad,
+      precio: createSolicitudDto.precio,
+      pedido: { id: createSolicitudDto.idPedido },
+      productos: { id: createSolicitudDto.idProducto },
+    });
   }
 
   async findAll(): Promise<Solicitud[]> {
