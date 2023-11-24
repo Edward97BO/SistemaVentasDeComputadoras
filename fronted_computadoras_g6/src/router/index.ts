@@ -33,7 +33,20 @@ const router = createRouter({
           component: () => import('../components/producto/ProductoEdit.vue')
         }
       ]
-    }
+    },
+    {
+      path: '/cliente',
+      name: 'cliente',
+      component: () => import('../views/ClienteView.vue'),
+      children: [
+      { path: '', component: () => import('../components/cliente/ClienteList.vue') },
+      { path: 'crear', component: () => import('../components/cliente/ClienteCreate.vue') },
+      {
+        path: 'editar/:id',
+        component: () => import('../components/cliente/ClienteEdit.vue')
+      }
+      ]
+    },
   ]
 })
 router.beforeEach(async (to) => {

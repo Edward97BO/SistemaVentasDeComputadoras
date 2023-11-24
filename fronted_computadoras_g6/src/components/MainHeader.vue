@@ -73,6 +73,9 @@ const location = useRoute()
             <li class="nav-item">
               <RouterLink to="/productos" class="nav-link click-scroll">Productos</RouterLink>
             </li>
+            <li class="nav-item">
+              <RouterLink to="/cliente" class="nav-link click-scroll">Cliente</RouterLink>
+            </li>
           </slot>
         </ul>
         <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-block d-none"
