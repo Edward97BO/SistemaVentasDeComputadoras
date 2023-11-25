@@ -47,6 +47,32 @@ const router = createRouter({
       }
       ]
     },
+    {
+      path: '/empleado',
+      name: 'empleado',
+      component: () => import('../views/EmpleadoView.vue'),
+      children: [
+        { path: '', component: () => import('../components/empleado/EmpleadoList.vue') },
+        { path: 'crear', component: () => import('../components/empleado/EmpleadoCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/empleado/EmpleadoEdit.vue')
+        }
+      ]
+    },
+    {
+      path: '/solicitud',
+      name: 'solicitud',
+      component: () => import('../views/SolicitudView.vue'),
+      children: [
+      { path: '', component: () => import('../components/solicitud/SolicitudList.vue') },
+      { path: 'crear', component: () => import('../components/solicitud/SolicitudCreate.vue') },
+      {
+        path: 'editar/:id',
+        component: () => import('../components/solicitud/SolicitudEdit.vue')
+      }
+      ]
+    }
   ]
 })
 router.beforeEach(async (to) => {
