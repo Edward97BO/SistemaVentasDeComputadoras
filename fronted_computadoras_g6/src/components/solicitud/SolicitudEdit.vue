@@ -11,6 +11,9 @@ const ENDPOINT = props.ENDPOINT_API ?? ''
 const codigo = ref('')
 const cantidad = ref('')
 const precio = ref('')
+const idPedido = ref('')
+const idProducto = ref('')
+
 
 
 const id = router.currentRoute.value.params['id']
@@ -20,7 +23,9 @@ async function editarSolicitud() {
     .patch(`${ENDPOINT}/${id}`, {
         codigo: codigo.value,
         cantidad: cantidad.value,
-      precio: precio.value
+      precio: precio.value,
+      idPedido: idPedido.value,
+      idProducto: idProducto.value
 
     })
     .then(() => router.push('/solicitudes'))
@@ -31,7 +36,8 @@ async function getSolicitud() {
     ;(codigo.value = response.data.codigo),
       (cantidad.value = response.data.cantidad),
       (precio.value = response.data.precio)
-
+      (idPedido.value = response.data.idPedido)
+      (idProducto.value = response.data.idProducto)
   })
 }
 
@@ -85,6 +91,26 @@ onMounted(() => {
             required
           />
           <label for="precio">Precio</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            v-model="idPedido"
+            placeholder="IdPedido"
+            required
+          />
+          <label for="idPedido">Id Pedido</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            v-model="idProducto"
+            placeholder="IdProducto"
+            required
+          />
+          <label for="idProducto">Id Producto</label>
         </div>
         
         

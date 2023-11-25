@@ -28,7 +28,7 @@ async function getPedido() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
     ;(codigo.value = response.data.codigo),
       (estado.value = response.data.estado),
-      (fechaNacimiento.value = response.data.fechaNaciemiento)
+      (fechaPedido.value = response.data.fechaPedido)
   })
 }
 

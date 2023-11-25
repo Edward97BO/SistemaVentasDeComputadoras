@@ -11,14 +11,17 @@ const ENDPOINT = props.ENDPOINT_API ?? ''
 const codigo = ref('')
 const cantidad = ref('')
 const precio = ref('')
-
+const idPedido = ref('')
+const idProducto = ref('')
 
 async function crearSolicitud() {
   await http
     .post(ENDPOINT, {
       codigo: codigo.value,
       cantidad: cantidad.value,
-      precio: precio.value
+      precio: precio.value,
+      idPedido: idPedido.value,
+      idProducto: idProducto.value
 
     })
     .then(() => router.push('/solicitudes'))
@@ -67,6 +70,26 @@ function goBack() {
             v-model="precio"
             placeholder="Precio"/>
           <label for="precio">Precio</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            v-model="idPedido"
+            placeholder="IdPedido"
+            required
+          />
+          <label for="idPedido">Id Pedido</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            v-model="idProducto"
+            placeholder="IdProducto"
+            required
+          />
+          <label for="idProducto">Id Producto</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

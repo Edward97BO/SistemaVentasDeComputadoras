@@ -57,6 +57,9 @@ onMounted(() => {
             <th scope="col">Código</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio</th>
+            <th scope="col">Id Pedido</th>
+            <th scope="col">Id Producto</th>
+            <th scope="col">Acciones</th>
             
           </tr>
         </thead>
@@ -67,6 +70,9 @@ onMounted(() => {
             <td>{{ solicitud.codigo }}</td>
             <td>{{ solicitud.cantidad }}</td>
             <td>{{ solicitud.precio }}</td>
+            <td>{{ solicitud.idPedido }}</td>
+            <td>{{ solicitud.idProducto }}</td>
+
             
             <td>
               <button class="btn text-success" @click="toEdit(solicitud.id)">

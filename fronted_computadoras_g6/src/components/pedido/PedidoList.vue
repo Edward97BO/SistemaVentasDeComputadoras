@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 
+
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -57,6 +58,8 @@ onMounted(() => {
             <th scope="col">Código</th>
             <th scope="col">Estado</th>
             <th scope="col">Fecha de Pedido</th>
+            <th scope="col">Id Cliente</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -64,7 +67,8 @@ onMounted(() => {
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ pedido.codigo }}</td>
             <td>{{ pedido.estado }}</td>
-            <td>{{ pedido.fechaPedido }}</td>
+            <td>{{ pedido.fechaPedido}}</td>
+            <td>{{pedido.idCliente }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(pedido.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" /> 

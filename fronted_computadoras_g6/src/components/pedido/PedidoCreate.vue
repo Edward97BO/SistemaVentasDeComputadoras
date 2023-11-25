@@ -11,6 +11,7 @@ const ENDPOINT = props.ENDPOINT_API ?? ''
 const codigo = ref('')
 const estado = ref('')
 const fechaPedido = ref('')
+const idCliente = ref('')
 
 
 async function crearPedido() {
@@ -19,6 +20,8 @@ async function crearPedido() {
       codigo: codigo.value,
       estado: estado.value,
       fechaPedido: fechaPedido.value,
+      idCliente: idCliente.value,
+
     })
     .then(() => router.push('/pedidos'))
 }
@@ -69,6 +72,16 @@ function goBack() {
             required
           />
           <label for="fechaPedido">Fecha de Pedido</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            v-model="idCliente"
+            placeholder="IdCliente"
+            required
+          />
+          <label for="idCliente">Id Cliente</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
