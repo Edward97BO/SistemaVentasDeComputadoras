@@ -21,23 +21,18 @@ export class CreateSolicitudDto {
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo Código no debe ser vacío' })
   @IsString({ message: 'El campo Código debe ser de tipo cadena' })
-  @MaxLength(10, {
-    message: 'El campo Código no debe ser mayor a 10 caracteres',
+  @MaxLength(100, {
+    message: 'El campo Código no debe ser mayor a 100 caracteres',
   })
   readonly codigo: string;
+
   @ApiProperty()
-  @IsNotEmpty({ message: 'El campo cantidad no debe ser vacío' })
-  @IsString({ message: 'El campo cantidad debe ser de tipo cadena' })
-  @MaxLength(60, {
-    message: 'El campo cantidad no debe ser mayor a 60 caracteres',
-  })
+  @IsDefined({ message: 'El campo cantidad debe estar definido' })
+  @IsNumber({}, { message: 'El campo cantidad debe ser de tipo numérico' })
   readonly cantidad: number;
 
   @ApiProperty()
-  @IsNotEmpty({ message: 'El campo precio no debe ser vacío' })
-  @IsString({ message: 'El campo precio debe ser de tipo cadena' })
-  @MaxLength(50, {
-    message: 'El campo precio no debe ser mayor a 50 caracteres',
-  })
+  @IsDefined({ message: 'El campo precio debe estar definido' })
+  @IsNumber({}, { message: 'El campo precio debe ser de tipo numérico' })
   readonly precio: number;
 }

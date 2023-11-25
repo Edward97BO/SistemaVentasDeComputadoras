@@ -51,20 +51,23 @@ const location = useRoute()
             <RouterLink to="/" class="nav-link click-scroll">Inicio</RouterLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
+            <a class="nav-link click-scroll" href="#section_1">Principal</a>
           </li>
-
+          <!-- <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
+          </li> -->
+         
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_3">Catálogo</a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_4">Promociones</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_5">Black Friday</a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_6">Contacto</a>

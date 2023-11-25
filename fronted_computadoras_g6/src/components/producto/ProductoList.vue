@@ -26,6 +26,9 @@ async function toDelete(id: number) {
   }
 }
 
+function addToCart(id:number) {
+}
+
 onMounted(() => {
   getProductos()
 })
@@ -77,6 +80,9 @@ onMounted(() => {
               </button>
               <button class="btn text-danger" @click="toDelete(producto.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />
+              </button>
+              <button class="btn btn-success" @click="addToCart(producto.id)">
+                <font-awesome-icon icon= "fa-solid fa-cart-shopping"/>
               </button>
             </td>
           </tr>

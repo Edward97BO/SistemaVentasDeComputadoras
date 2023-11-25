@@ -14,13 +14,19 @@ export class Solicitud {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 10, nullable: false })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   codigo: string;
 
-  @Column({ type: 'varchar', length: 60, nullable: false })
+  @Column({ name: 'id_producto' })
+  idProducto: number;
+
+  @Column({ name: 'id_pedido' })
+  idPedido: number;
+
+  @Column({ type: 'int', nullable: false })
   cantidad: number;
 
-  @Column({ name: 'DECIMAL(10,2)', nullable: false })
+  @Column({ name: 'decimal', nullable: false })
   precio: number;
 
   @OneToOne(() => Pedido, (pedido) => pedido.solicitudes)

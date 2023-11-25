@@ -21,6 +21,9 @@ export class Pedido {
   @Column({ type: 'varchar', length: 100, nullable: false })
   estado: string;
 
+  @Column({ name: 'id_cliente' })
+  idCliente: number;
+
   @CreateDateColumn({ name: 'fecha_pedido' })
   fechaPedido: Date;
 

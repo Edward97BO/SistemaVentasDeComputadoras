@@ -22,7 +22,6 @@ export class SolicitudesService {
     const existeSolicitud = await this.solicitudRepository.findOneBy({
       codigo: createSolicitudDto.codigo,
       pedido: { id: createSolicitudDto.idPedido },
-      producto: { id: createSolicitudDto.idProducto },
     });
 
     if (existeSolicitud) {
