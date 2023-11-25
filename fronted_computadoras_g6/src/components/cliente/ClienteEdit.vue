@@ -28,7 +28,7 @@ async function editarCliente() {
       telefono: telefono.value,
       direccion: direccion.value
     })
-    .then(() => router.push('/cliente'))
+    .then(() => router.push('/clientes'))
 }
 
 async function getCliente() {
@@ -57,7 +57,7 @@ onMounted(() => {
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <li class="breadcrumb-item">
-          <RouterLink to="/cliente">Cliente</RouterLink>
+          <RouterLink to="/clientes">Clientes</RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Editar</li>
       </ol>
@@ -107,7 +107,7 @@ onMounted(() => {
           v-model="telefono" 
           placeholder="Telefono" 
           required />
-          <label for="telefono">Telefono</label>
+          <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating">
           <input type="text" 
@@ -115,7 +115,7 @@ onMounted(() => {
           v-model="direccion" 
           placeholder="Direccion" 
           required />
-          <label for="direccion">Direccion</label>
+          <label for="direccion">Dirección</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

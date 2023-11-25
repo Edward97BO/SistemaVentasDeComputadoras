@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Producto} from '@/models/producto'
+import type { Producto } from '@/models/producto'
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
@@ -45,7 +45,8 @@ onMounted(() => {
       <div class="col-12">
         <RouterLink to="/productos/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />
-          Crear Nuevo</RouterLink>
+          Crear Nuevo</RouterLink
+        >
       </div>
     </div>
 
@@ -72,7 +73,7 @@ onMounted(() => {
             <td>{{ producto.categoria }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(producto.id)">
-                <font-awesome-icon icon="fa-solid fa-edit" /> 
+                <font-awesome-icon icon="fa-solid fa-edit" />
               </button>
               <button class="btn text-danger" @click="toDelete(producto.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />

@@ -35,8 +35,8 @@ const router = createRouter({
       ]
     },
     {
-      path: '/cliente',
-      name: 'cliente',
+      path: '/clientes',
+      name: 'clientes',
       component: () => import('../views/ClienteView.vue'),
       children: [
       { path: '', component: () => import('../components/cliente/ClienteList.vue') },
@@ -48,8 +48,8 @@ const router = createRouter({
       ]
     },
     {
-      path: '/empleado',
-      name: 'empleado',
+      path: '/empleados',
+      name: 'empleados',
       component: () => import('../views/EmpleadoView.vue'),
       children: [
         { path: '', component: () => import('../components/empleado/EmpleadoList.vue') },
@@ -61,8 +61,8 @@ const router = createRouter({
       ]
     },
     {
-      path: '/solicitud',
-      name: 'solicitud',
+      path: '/solicitudes',
+      name: 'solicitudes',
       component: () => import('../views/SolicitudView.vue'),
       children: [
       { path: '', component: () => import('../components/solicitud/SolicitudList.vue') },

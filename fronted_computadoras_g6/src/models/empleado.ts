@@ -1,4 +1,5 @@
 export interface Empleado {
+    id: number;
     usuario: string;
     clave: string;
     nombre: string;
@@ -7,6 +8,4 @@ export interface Empleado {
     telefono:string;
     direccion:string;
     puesto : string;
-    
-    //solicitudes: Solicitud[];
     }

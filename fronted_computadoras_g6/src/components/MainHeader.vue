@@ -74,13 +74,13 @@ const location = useRoute()
               <RouterLink to="/productos" class="nav-link click-scroll">Productos</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/cliente" class="nav-link click-scroll">Cliente</RouterLink>
+              <RouterLink to="/empleados" class="nav-link click-scroll">Empleados</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/empleado" class="nav-link click-scroll">Empleado</RouterLink>
+              <RouterLink to="/clientes" class="nav-link click-scroll">Clientes</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/solicitud" class="nav-link click-scroll">Solicitud</RouterLink>
+              <RouterLink to="/solicitudes" class="nav-link click-scroll">Solicitudes</RouterLink>
             </li>
           </slot>
         </ul>

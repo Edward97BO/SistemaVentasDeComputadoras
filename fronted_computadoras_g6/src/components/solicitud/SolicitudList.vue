@@ -16,7 +16,7 @@ async function getSolicitud() {
 }
 
 function toEdit(id: number) {
-  router.push(`/solicitud/editar/${id}`)
+  router.push(`/solicitudes/editar/${id}`)
 }
 
 async function toDelete(id: number) {
@@ -36,14 +36,14 @@ onMounted(() => {
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
-        <li class="breadcrumb-item active" aria-current="page">Solicitud</li>
+        <li class="breadcrumb-item active" aria-current="page">Solicitudes</li>
       </ol>
     </nav>
 
     <div class="row">
       <h2>Lista de Solicitudes</h2>
       <div class="col-12">
-        <RouterLink to="/solicitud/crear">
+        <RouterLink to="/solicitudes/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />
           Crear Nuevo</RouterLink>
       </div>
@@ -54,7 +54,7 @@ onMounted(() => {
         <thead>
           <tr>
             <th scope="col">N°</th>
-            <th scope="col">Codigo</th>
+            <th scope="col">Código</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio</th>
             

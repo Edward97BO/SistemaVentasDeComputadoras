@@ -16,7 +16,7 @@ async function getCliente() {
 }
 
 function toEdit(id: number) {
-  router.push(`/empleado/editar/${id}`)
+  router.push(`/empleados/editar/${id}`)
 }
 
 async function toDelete(id: number) {
@@ -36,14 +36,14 @@ onMounted(() => {
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
-        <li class="breadcrumb-item active" aria-current="page">Empleado</li>
+        <li class="breadcrumb-item active" aria-current="page">Empleados</li>
       </ol>
     </nav>
 
     <div class="row">
-      <h2>Lista de empleados</h2>
+      <h2>Lista de Empleados</h2>
       <div class="col-12">
-        <RouterLink to="/empleado/crear">
+        <RouterLink to="/empleados/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />
           Crear Nuevo</RouterLink>
       </div>
@@ -59,8 +59,8 @@ onMounted(() => {
             <th scope="col">Nombre</th>
             <th scope="col">Apellidos</th>
             <th scope="col">Email</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Direccion</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Dirección</th>
             <th scope="col">Puesto</th>
           </tr>
         </thead>

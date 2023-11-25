@@ -4,6 +4,4 @@ export interface Solicitud {
     codigo: string;
     cantidad: number;
     precio: number;
-    
-    //solicitudes: Solicitud[];
     }

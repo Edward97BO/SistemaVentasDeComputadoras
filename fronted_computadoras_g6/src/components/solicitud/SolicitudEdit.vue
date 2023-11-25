@@ -23,7 +23,7 @@ async function editarSolicitud() {
       precio: precio.value
 
     })
-    .then(() => router.push('/solicitud'))
+    .then(() => router.push('/solicitudes'))
 }
 
 async function getSolicitud() {
@@ -50,7 +50,7 @@ onMounted(() => {
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <li class="breadcrumb-item">
-          <RouterLink to="/solicitud">Solicitud</RouterLink>
+          <RouterLink to="/solicitudes">Solicitud</RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Editar</li>
       </ol>
@@ -64,11 +64,11 @@ onMounted(() => {
       <form @submit.prevent="editarSolicitud">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" v-model="codigo" placeholder="Codigo" required />
-          <label for="codigo">Codigo</label>
+          <label for="codigo">Código</label>
         </div>
         <div class="form-floating">
           <input
-            type="text"
+            type="number"
             class="form-control"
             v-model="cantidad"
             placeholder="Cantidad"

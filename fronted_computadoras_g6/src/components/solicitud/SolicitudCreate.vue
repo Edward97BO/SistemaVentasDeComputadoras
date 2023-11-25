@@ -21,7 +21,7 @@ async function crearSolicitud() {
       precio: precio.value
 
     })
-    .then(() => router.push('/solicitud'))
+    .then(() => router.push('/solicitudes'))
 }
 
 function goBack() {
@@ -35,25 +35,25 @@ function goBack() {
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <li class="breadcrumb-item">
-          <RouterLink to="/solicitud">solicitud</RouterLink>
+          <RouterLink to="/solicitudes">Solicitud</RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Crear</li>
       </ol>
     </nav>
 
     <div class="row">
-      <h2>Crear Nueva solicitud</h2>
+      <h2>Crear Nueva Solicitud</h2>
     </div>
 
     <div class="row">
       <form @submit.prevent="crearSolicitud">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" v-model="codigo" placeholder="Codigo" required />
-          <label for="codigo">Codigo</label>
+          <label for="codigo">Código</label>
         </div>
         <div class="form-floating">
           <input
-            type="text"
+            type="number"
             class="form-control"
             v-model="cantidad"
             placeholder="Cantidad"/>

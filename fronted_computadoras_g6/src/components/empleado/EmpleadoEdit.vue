@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-import { LanguageVariant } from 'typescript';
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -33,7 +32,7 @@ async function editarEmpleado() {
       direccion: direccion.value,
       puesto: puesto.value
     })
-    .then(() => router.push('/empleado'))
+    .then(() => router.push('/empleados'))
 }
 
 async function getCliente() {
@@ -64,7 +63,7 @@ onMounted(() => {
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <li class="breadcrumb-item">
-          <RouterLink to="/cliente">Cliente</RouterLink>
+          <RouterLink to="/empleados">Empleados</RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Editar</li>
       </ol>
@@ -124,7 +123,7 @@ onMounted(() => {
           v-model="telefono" 
           placeholder="Telefono" 
           required />
-          <label for="telefono">Telefono</label>
+          <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating">
           <input type="text" 
@@ -132,7 +131,7 @@ onMounted(() => {
           v-model="direccion" 
           placeholder="Direccion" 
           required />
-          <label for="direccion">Direccion</label>
+          <label for="direccion">Dirección</label>
         </div>
         <div class="form-floating">
           <input type="text" 

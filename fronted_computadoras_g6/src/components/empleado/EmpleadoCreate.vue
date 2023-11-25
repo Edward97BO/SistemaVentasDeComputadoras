@@ -10,7 +10,6 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const usuario = ref('')
 const clave = ref('')
-
 const nombre = ref('')
 const apellidos = ref('')
 const email = ref('')
@@ -30,7 +29,7 @@ async function crearEmpleado() {
       direccion: direccion.value,
       puesto: puesto.value
     })
-    .then(() => router.push('/empleado'))
+    .then(() => router.push('/empleados'))
 }
 
 function goBack() {
@@ -44,7 +43,7 @@ function goBack() {
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <li class="breadcrumb-item">
-          <RouterLink to="/empleado">Empleados</RouterLink>
+          <RouterLink to="/empleados">Empleados</RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Crear</li>
       </ol>
@@ -102,7 +101,7 @@ function goBack() {
           v-model="telefono" 
           placeholder="Telefono" 
           required />
-          <label for="telefono">Telefono</label>
+          <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating">
           <input type="text" 
@@ -110,7 +109,7 @@ function goBack() {
           v-model="direccion" 
           placeholder="Direccion" 
           required />
-          <label for="direccion">Direccion</label>
+          <label for="direccion">Dirección</label>
         </div>
         <div class="form-floating">
           <input type="text" 
