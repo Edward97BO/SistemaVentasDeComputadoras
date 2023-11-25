@@ -80,6 +80,9 @@ const location = useRoute()
               <RouterLink to="/clientes" class="nav-link click-scroll">Clientes</RouterLink>
             </li>
             <li class="nav-item">
+              <RouterLink to="/pedidos" class="nav-link click-scroll">Pedidos</RouterLink>
+            </li>
+            <li class="nav-item">
               <RouterLink to="/solicitudes" class="nav-link click-scroll">Solicitudes</RouterLink>
             </li>
           </slot>

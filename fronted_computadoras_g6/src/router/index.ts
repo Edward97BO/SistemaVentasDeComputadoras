@@ -72,6 +72,19 @@ const router = createRouter({
         component: () => import('../components/solicitud/SolicitudEdit.vue')
       }
       ]
+    },
+    {
+      path: '/pedidos',
+      name: 'pedidos',
+      component: () => import('../views/PedidoView.vue'),
+      children: [
+      { path: '', component: () => import('../components/pedido/PedidoList.vue') },
+      { path: 'crear', component: () => import('../components/pedido/PedidoCreate.vue') },
+      {
+        path: 'editar/:id',
+        component: () => import('../components/pedido/PedidoEdit.vue')
+      }
+      ]
     }
   ]
 })
