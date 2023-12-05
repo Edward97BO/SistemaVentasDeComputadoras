@@ -50,9 +50,6 @@ const location = useRoute()
           <li class="nav-item">
             <RouterLink to="/" class="nav-link click-scroll">Inicio</RouterLink>
           </li>
-          <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_1">Principal</a>
-          </li>
           <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
           </li> -->
@@ -97,6 +94,7 @@ const location = useRoute()
       </div>
     </div>
   </nav>
+
 </template>
 
 <style></style>

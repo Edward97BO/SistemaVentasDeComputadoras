@@ -51,24 +51,24 @@
 
           <ul class="site-footer-links">
             <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Inicio</a>
+              <a href="#section_1" class="site-footer-link">Inicio</a>
             </li>
 
             <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Acerca de</a>
+              <a href="#section_2" class="site-footer-link">Acerca de</a>
             </li>
 
             <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Catálogo</a>
+              <a href="#section_3" class="site-footer-link">Catálogo</a>
             </li>
             <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Promociones</a>
+              <a href="#section_4" class="site-footer-link">Promociones</a>
             </li>
             <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Black Friday</a>
+              <a href="#section_5" class="site-footer-link">Black Friday</a>
             </li>
             <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Contacto</a>
+              <a href="#section_6" class="site-footer-link">Contacto</a>
             </li>
           </ul>
         </div>
@@ -77,7 +77,7 @@
           <h5 class="site-footer-title mb-3">Contáctanos</h5>
 
           <p class="text-white d-flex mb-1">
-            <a href="tel: 090-080-0760" class="site-footer-link"> +591 78659836 </a>
+            <a href="https://api.whatsapp.com/send?phone=78683665" class="site-footer-link"> +591 78683665 </a>
           </p>
 
           <p class="text-white d-flex">
@@ -92,7 +92,7 @@
             I. Murguía #392, Sucre, Bolivia
           </p>
 
-          <a class="link-fx-1 color-contrast-higher mt-3" href="#">
+          <a class="link-fx-1 color-contrast-higher mt-3" href="https://maps.app.goo.gl/KFBwVwwLbmcCAe3v6" target="_blank">
             <span>Ver ubicación</span>
             <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
               <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">

@@ -3,7 +3,7 @@ import type { Pedido } from '@/models/pedido'
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-
+import dayjs from 'dayjs'
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -30,6 +30,7 @@ async function toDelete(id: number) {
 onMounted(() => {
   getPedido()
 })
+
 </script>
 
 <template>
@@ -67,7 +68,7 @@ onMounted(() => {
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ pedido.codigo }}</td>
             <td>{{ pedido.estado }}</td>
-            <td>{{ pedido.fechaPedido}}</td>
+            <td>{{ dayjs(pedido.fechaPedido).format('DD/MM/YYYY') }}</td>
             <td>{{pedido.idCliente }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(pedido.id)">
