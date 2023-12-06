@@ -25,7 +25,7 @@ export class SolicitudesService {
     });
 
     if (existeSolicitud) {
-      throw new ConflictException('La Solicitud ya existe');
+      throw new ConflictException('El pedido en línea ya existe');
     }
     return this.solicitudRepository.save({
       codigo: createSolicitudDto.codigo.trim(),
@@ -37,13 +37,16 @@ export class SolicitudesService {
   }
 
   async findAll(): Promise<Solicitud[]> {
-    return this.solicitudRepository.find();
+    return this.solicitudRepository.find({ relations: ['pedido', 'producto'] });
   }
 
   async findOne(id: number): Promise<Solicitud> {
-    const solicitud = await this.solicitudRepository.findOneBy({ id });
+    const solicitud = await this.solicitudRepository.findOne({
+      where: { id },
+      relations: ['pedido', 'producto'],
+    });
     if (!solicitud) {
-      throw new NotFoundException(`No existe la Solicitud ${id}`);
+      throw new NotFoundException(`No existe el Pedido en Línea ${id}`);
     }
     return solicitud;
   }
@@ -54,7 +57,7 @@ export class SolicitudesService {
   ): Promise<Solicitud> {
     const solicitud = await this.solicitudRepository.findOneBy({ id });
     if (!solicitud) {
-      throw new NotFoundException(`No existe la solicitud ${id}`);
+      throw new NotFoundException(`No existe el Pedido en Línea${id}`);
     }
     const solicitudUpdate = Object.assign(solicitud, updateSolicitudDto);
     solicitudUpdate.pedido = { id: updateSolicitudDto.idPedido } as Pedido;
@@ -67,7 +70,7 @@ export class SolicitudesService {
   async remove(id: number) {
     const solicitud = await this.solicitudRepository.findOneBy({ id });
     if (!solicitud) {
-      throw new NotFoundException(`No existe la Solicitud ${id}`);
+      throw new NotFoundException(`No existe el Pedido en Línea ${id}`);
     }
     return this.solicitudRepository.delete(id);
   }

@@ -6,4 +6,5 @@ export interface Empleado {
     estado: string;
     fechaPedido: Date;
     idCliente: Cliente;
+    nombre: Cliente;
     }

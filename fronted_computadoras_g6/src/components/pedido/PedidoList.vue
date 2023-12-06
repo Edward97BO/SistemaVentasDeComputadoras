@@ -69,7 +69,7 @@ onMounted(() => {
             <td>{{ pedido.codigo }}</td>
             <td>{{ pedido.estado }}</td>
             <td>{{ dayjs(pedido.fechaPedido).format('DD/MM/YYYY') }}</td>
-            <td>{{pedido.idCliente }}</td>
+            <td>{{pedido.cliente.nombre +' '+pedido.cliente.apellidos }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(pedido.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" /> 

@@ -36,11 +36,14 @@ export class PedidosService {
   }
 
   async findAll(): Promise<Pedido[]> {
-    return this.pedidoRepository.find();
+    return this.pedidoRepository.find({ relations: ['cliente'] });
   }
 
   async findOne(id: number): Promise<Pedido> {
-    const pedido = await this.pedidoRepository.findOneBy({ id });
+    const pedido = await this.pedidoRepository.findOne({
+      where: { id },
+      relations: ['cliente'],
+    });
     if (!pedido) {
       throw new NotFoundException(`No existe el Pedido ${id}`);
     }

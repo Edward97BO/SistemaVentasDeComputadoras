@@ -26,7 +26,7 @@ export class Solicitud {
   @Column({ type: 'int', nullable: false })
   cantidad: number;
 
-  @Column({ name: 'decimal', nullable: false })
+  @Column({ type: 'decimal', nullable: false })
   precio: number;
 
   @OneToOne(() => Pedido, (pedido) => pedido.solicitudes)
