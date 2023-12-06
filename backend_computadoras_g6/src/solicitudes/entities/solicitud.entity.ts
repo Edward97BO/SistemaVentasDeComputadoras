@@ -2,8 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToMany,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Pedido } from 'src/pedidos/entities/pedido.entity';
@@ -29,11 +28,11 @@ export class Solicitud {
   @Column({ type: 'decimal', nullable: false })
   precio: number;
 
-  @OneToOne(() => Pedido, (pedido) => pedido.solicitudes)
+  @ManyToOne(() => Pedido, (pedido) => pedido.solicitudes)
   @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
   pedido: Pedido;
 
-  @OneToMany(() => Producto, (producto) => producto.solicitudes)
+  @ManyToOne(() => Producto, (producto) => producto.solicitudes)
   @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
   producto: Producto;
 }

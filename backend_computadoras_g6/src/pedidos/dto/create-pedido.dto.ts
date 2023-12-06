@@ -32,6 +32,6 @@ export class CreatePedidoDto {
 
   @ApiProperty({ example: 'dd/mm/yyyy' })
   @IsNotEmpty({ message: 'La fecha no debe ser vacío' })
-  @IsDateString({}, { message: 'El campo Fecha Pedido debe ser tipo fecha' })
+  @IsDateString({}, { message: 'El campo fechaPedido debe ser tipo fecha' })
   readonly fechaPedido: Date;
 }

@@ -8,6 +8,7 @@ import { UpdateProductoDto } from './dto/update-producto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Producto } from './entities/producto.entity';
 import { Repository } from 'typeorm';
+import { Categoria } from 'src/categorias/entities/categoria.entity';
 
 @Injectable()
 export class ProductosService {
@@ -19,6 +20,7 @@ export class ProductosService {
   async create(createProductoDto: CreateProductoDto): Promise<Producto> {
     const existeProducto = await this.productoRepository.findOneBy({
       nombre: createProductoDto.nombre,
+      categoria: { id: createProductoDto.idCategoria },
     });
 
     if (existeProducto) {
@@ -27,18 +29,22 @@ export class ProductosService {
     return this.productoRepository.save({
       nombre: createProductoDto.nombre.trim(),
       descripcion: createProductoDto.descripcion.trim(),
-      categoria: createProductoDto.categoria.trim(),
+      url: createProductoDto.url.trim(),
       precio: createProductoDto.precio,
       stock: createProductoDto.stock,
+      categoria: { id: createProductoDto.idCategoria },
     });
   }
 
   async findAll(): Promise<Producto[]> {
-    return this.productoRepository.find();
+    return this.productoRepository.find({ relations: ['categoria'] });
   }
 
   async findOne(id: number): Promise<Producto> {
-    const producto = await this.productoRepository.findOneBy({ id });
+    const producto = await this.productoRepository.findOne({
+      where: { id },
+      relations: ['categoria'],
+    });
     if (!producto) {
       throw new NotFoundException(`No existe el producto ${id}`);
     }
@@ -54,6 +60,9 @@ export class ProductosService {
       throw new NotFoundException(`No existe el producto ${id}`);
     }
     const productoUpdate = Object.assign(producto, updateProductoDto);
+    productoUpdate.categoria = {
+      id: updateProductoDto.idCategoria,
+    } as Categoria;
     return this.productoRepository.save(productoUpdate);
   }
 

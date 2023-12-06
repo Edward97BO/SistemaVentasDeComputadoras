@@ -9,6 +9,8 @@ import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoriasModule } from './categorias/categorias.module';
+import { CarritosModule } from './carritos/carritos.module';
 
 @Module({
   imports: [
@@ -27,9 +29,13 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     EmpleadosModule,
     ClientesModule,
+    CategoriasModule,
     ProductosModule,
+    CarritosModule,
     PedidosModule,
     SolicitudesModule,
+    CategoriasModule,
+    CarritosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

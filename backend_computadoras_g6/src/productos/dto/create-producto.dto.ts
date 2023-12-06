@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+import {
+  IsDefined,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateProductoDto {
   @ApiProperty()
@@ -27,10 +33,15 @@ export class CreateProductoDto {
   readonly stock: number;
 
   @ApiProperty()
-  @IsNotEmpty({ message: 'El campo categoría no de ser vacío' })
-  @IsString({ message: 'El campo categoría debe ser de tipo cadena' })
-  @MaxLength(100, {
-    message: 'El campo categoría no debe ser mayor a 100 caracteres',
+  @IsNotEmpty({ message: 'El campo url no debe ser vacío' })
+  @IsString({ message: 'El campo url debe ser de tipo cadena' })
+  @MaxLength(300, {
+    message: 'El campo url no debe ser mayor a 300 caracteres',
   })
-  readonly categoria: string;
+  readonly url: string;
+
+  @ApiProperty()
+  @IsDefined({ message: 'El campo idCategoria debe estar definido' })
+  @IsNumber({}, { message: 'El campo idCategoria debe ser de tipo numerico' })
+  readonly idCategoria: number;
 }
