@@ -26,8 +26,6 @@ async function toDelete(id: number) {
   }
 }
 
-function addToCart(id:number) {
-}
 
 onMounted(() => {
   getProductos()
@@ -62,7 +60,7 @@ onMounted(() => {
             <th scope="col">Descripción</th>
             <th scope="col">Precio</th>
             <th scope="col">Stock</th>
-            <th scope="col">Categoría</th>
+            <th scope="col">Imagen</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -73,7 +71,7 @@ onMounted(() => {
             <td>{{ producto.descripcion }}</td>
             <td>{{ producto.precio }}</td>
             <td>{{ producto.stock }}</td>
-            <td>{{ producto.categoria }}</td>
+            <td>{{ producto.url }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(producto.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />

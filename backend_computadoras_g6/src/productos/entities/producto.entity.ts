@@ -1,10 +1,12 @@
 import { Carrito } from 'src/carritos/entities/carrito.entity';
 import { Categoria } from 'src/categorias/entities/categoria.entity';
+import { Compra } from 'src/compras/entities/compra.entity';
 import { Solicitud } from 'src/solicitudes/entities/solicitud.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -33,13 +35,16 @@ export class Producto {
   @OneToMany(() => Solicitud, (solicitud) => solicitud.producto)
   solicitudes: Solicitud[];
 
-  @ManyToOne(() => Carrito, (carrito) => carrito.producto)
-  carritos: Carrito[];
-
   @Column({ name: 'id_categoria' })
   idCategoria: number;
 
   @ManyToOne(() => Categoria, (categoria) => categoria.productos)
   @JoinColumn({ name: 'id_categoria', referencedColumnName: 'id' })
   categoria: Categoria;
+
+  @ManyToMany(() => Carrito, (carrito) => carrito.productos)
+  carritos: Carrito[];
+
+  @OneToMany(() => Compra, (compra) => compra.carrito)
+  compras: Compra[];
 }

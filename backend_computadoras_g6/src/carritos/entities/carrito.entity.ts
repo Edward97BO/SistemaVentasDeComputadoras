@@ -1,8 +1,9 @@
+import { Compra } from 'src/compras/entities/compra.entity';
 import { Producto } from 'src/productos/entities/producto.entity';
 import {
   Column,
   Entity,
-  JoinColumn,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -11,9 +12,6 @@ import {
 export class Carrito {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ name: 'id_producto' })
-  idProducto: number;
 
   @Column({ length: 10 })
   codigo: string;
@@ -24,7 +22,9 @@ export class Carrito {
   @Column({ type: 'decimal', nullable: false })
   precio: number;
 
-  @OneToMany(() => Producto, (producto) => producto.carritos)
-  @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
-  producto: Producto;
+  @ManyToMany(() => Producto, (producto) => producto.carritos)
+  productos: Producto[];
+
+  @OneToMany(() => Compra, (compra) => compra.producto)
+  compras: Compra[];
 }

@@ -1,11 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsDefined,
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  MaxLength,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
 
 export class CreateCarritoDto {
   @ApiProperty()
@@ -23,9 +17,4 @@ export class CreateCarritoDto {
   @ApiProperty()
   @IsNumber({}, { message: 'El campo cantidad debe ser de tipo numérico' })
   readonly precio: number;
-
-  @ApiProperty()
-  @IsDefined({ message: 'El campo idProducto debe estar definido' })
-  @IsNumber({}, { message: 'El campo idProducto debe ser de tipo numerico' })
-  readonly idProducto: number;
 }
