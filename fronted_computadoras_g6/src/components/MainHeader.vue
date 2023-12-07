@@ -56,6 +56,9 @@ const scrollToTop = () => {
           <li class="nav-item">
             <RouterLink to="/" class="nav-link click-scroll">Inicio</RouterLink>
           </li>
+          <li class="nav-item">
+            <RouterLink to="/compras" class="nav-link click-scroll">Catálogo</RouterLink>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
           </li> -->

@@ -122,4 +122,6 @@ function goBack() {
   </div>
 </template>
 
-<style></style>
+<style>
+
+</style>

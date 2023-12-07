@@ -10,7 +10,7 @@
 
           <h1 class="text-white mb-5">IT Pro</h1>
 
-          <a class="btn custom-btn smoothscroll" href="#section_3">Comprar Ahora</a>
+          <RouterLink to="/compras" class="btn custom-btn smoothscroll" >Comprar Ahora</RouterLink>
         </div>
 
         <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">
