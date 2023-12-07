@@ -1,10 +1,10 @@
 import type { Cliente } from "./cliente";
 
-export interface Empleado {
+export interface Pedido {
     id: number;
     codigo: string;
     estado: string;
     fechaPedido: Date;
     idCliente: Cliente;
-    nombre: Cliente;
+    cliente: Cliente;
     }

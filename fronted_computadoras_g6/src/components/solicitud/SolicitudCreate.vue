@@ -1,7 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Pedido } from '@/models/pedido'
+import type { Producto } from '@/models/producto';
+
+var pedidos = ref<Pedido[]>([])
+async function getPedidos() {
+  pedidos.value = await http.get('pedidos').then((response) => response.data)
+}
+
+onMounted(() => {
+  getPedidos()
+})
+
+var productos = ref<Producto[]>([])
+async function getProductos() {
+  productos.value = await http.get('productos').then((response) => response.data)
+}
+
+onMounted(() => {
+  getProductos()
+})
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -45,7 +65,7 @@ function goBack() {
     </nav>
 
     <div class="row">
-      <h2>Crear Nueva Solicitud</h2>
+      <h2>Crear Pedido en Línea</h2>
     </div>
 
     <div class="row">
@@ -71,25 +91,17 @@ function goBack() {
             placeholder="Precio"/>
           <label for="precio">Precio</label>
         </div>
-        <div class="form-floating">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idPedido"
-            placeholder="IdPedido"
-            required
-          />
-          <label for="idPedido">Id Pedido</label>
+        <div class="form-floating mb-3">
+          <select v-model="idPedido" class="form-select">
+            <option v-for="pedido in pedidos" :value="pedido.id" :key="pedido.id"> {{ pedido.codigo }} </option>
+          </select>
+          <label for="pedido">Código de Pedido</label>
         </div>
-        <div class="form-floating">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idProducto"
-            placeholder="IdProducto"
-            required
-          />
-          <label for="idProducto">Id Producto</label>
+        <div class="form-floating mb-3">
+          <select v-model="idProducto" class="form-select">
+            <option v-for="producto in productos" :value="producto.id" :key="producto.id"> {{ producto.nombre }} </option>
+          </select>
+          <label for="producto">Nombre de Producto</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

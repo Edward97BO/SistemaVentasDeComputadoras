@@ -1,7 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Cliente } from '@/models/cliente'
+
+var clientes = ref<Cliente[]>([])
+async function getClientes() {
+  clientes.value = await http.get('clientes').then((response) => response.data)
+}
+
+onMounted(() => {
+  getClientes()
+})
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -13,15 +23,13 @@ const estado = ref('')
 const fechaPedido = ref('')
 const idCliente = ref('')
 
-
 async function crearPedido() {
   await http
     .post(ENDPOINT, {
       codigo: codigo.value,
       estado: estado.value,
       fechaPedido: fechaPedido.value,
-      idCliente: idCliente.value,
-
+      idCliente: idCliente.value
     })
     .then(() => router.push('/pedidos'))
 }
@@ -54,13 +62,12 @@ function goBack() {
           <label for="codigo">Código</label>
         </div>
         <div class="form-floating">
-          <input
-            type="text"
-            class="form-control"
-            v-model="estado"
-            placeholder="Estado"
-            required
-          />
+          <select v-model="estado" class="form-control" placeholder="Estado" required>
+            <option>Enviado</option>
+            <option>Entregado</option>
+            <option>Cancelado</option>
+            <option>Rechazado</option>
+          </select>
           <label for="estado">Estado</label>
         </div>
         <div class="form-floating">
@@ -73,19 +80,16 @@ function goBack() {
           />
           <label for="fechaPedido">Fecha de Pedido</label>
         </div>
-        <div class="form-floating">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idCliente"
-            placeholder="IdCliente"
-            required
-          />
-          <label for="idCliente">Id Cliente</label>
+        <div class="form-floating mb-3">
+          <select v-model="idCliente" class="form-select">
+            <option v-for="cliente in clientes" :value="cliente.id" :key="cliente.id"> {{ cliente.nombre+' '+cliente.apellidos }} </option>
+          </select>
+          <label for="cliente">Cliente</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /></button>
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" />
+          </button>
         </div>
       </form>
     </div>
