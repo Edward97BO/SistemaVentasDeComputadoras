@@ -1,7 +1,7 @@
 //import "bootstrap/dist/css/bootstrap.min.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPlus, faEdit, faTrash, faFloppyDisk, faCartShopping, faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faEdit, faTrash, faFloppyDisk, faCartShopping, faArrowUp, faUserGear, faUserTie, faChildReaching, faMicrochip, faList, faComputer, faShop, faTruckFast, faEarthAmerica } from '@fortawesome/free-solid-svg-icons'
 //import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -11,7 +11,7 @@ import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
-library.add(faPlus, faEdit, faTrash, faFloppyDisk, faCartShopping, faArrowUp)
+library.add(faPlus, faEdit, faTrash, faFloppyDisk, faCartShopping, faArrowUp, faUserGear ,faUserTie,faChildReaching, faMicrochip, faList, faComputer, faShop, faTruckFast, faEarthAmerica)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(createPinia())

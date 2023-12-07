@@ -78,10 +78,10 @@ const scrollToTop = () => {
             <li class="nav-item">
               <div class="mainheader">
                 <div class="dropdown">
-                  <a class="nav-link click-scroll"> Admin</a>
+                  <a class="nav-link click-scroll"><font-awesome-icon icon="fa fa-user-gear" /> Admin</a>
                   <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
-                    <RouterLink to="/empleados" class="nav-link click-scroll"> Empleados</RouterLink>
-                    <RouterLink to="/clientes" class="nav-link click-scroll"> Clientes</RouterLink>
+                    <RouterLink to="/empleados" class="nav-link click-scroll"><font-awesome-icon icon="fa fa-user-tie" /> Empleados</RouterLink>
+                    <RouterLink to="/clientes" class="nav-link click-scroll"><font-awesome-icon icon="fa fa-child-reaching" /> Clientes</RouterLink>
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@ const scrollToTop = () => {
             <li class="nav-item">
               <div class="mainheader">
                 <div class="dropdown">
-                  <a class="nav-link click-scroll"> Productos</a>
+                  <a class="nav-link click-scroll"> Inventario</a>
                   <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
                     <RouterLink to="/categorias" class="nav-link click-scroll"> Categorías</RouterLink>
                     <RouterLink to="/productos" class="nav-link click-scroll"> Productos</RouterLink>
@@ -100,7 +100,7 @@ const scrollToTop = () => {
             <li class="nav-item">
               <div class="mainheader">
                 <div class="dropdown">
-                  <a class="nav-link click-scroll"> Mercado</a>
+                  <a class="nav-link click-scroll"> Inventario </a>
                   <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
                     <RouterLink to="/pedidos" class="nav-link click-scroll"> Pedidos</RouterLink>
                     <RouterLink to="/solicitudes" class="nav-link click-scroll"> Online</RouterLink>
