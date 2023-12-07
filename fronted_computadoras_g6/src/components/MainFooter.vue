@@ -59,7 +59,7 @@
             </li>
 
             <li class="site-footer-link-item">
-              <a href="#section_3" class="site-footer-link">Catálogo</a>
+              <a href="#section_3" class="site-footer-link">Novedades</a>
             </li>
             <li class="site-footer-link-item">
               <a href="#section_4" class="site-footer-link">Promociones</a>
