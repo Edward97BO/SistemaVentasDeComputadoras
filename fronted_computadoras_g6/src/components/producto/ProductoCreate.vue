@@ -62,7 +62,7 @@ function goBack() {
     <div class="row">
       <form @submit.prevent="crearProducto">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" required />
+          <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="No se Puede Ingresar Números" required />
           <label for="nombre">Nombre</label>
         </div>
         <div class="form-floating">
