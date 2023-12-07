@@ -94,10 +94,6 @@ onMounted(() => {
 
           <label for="cantidad">Cantidad</label>
         </div>
-        <div class="form-floating">
-          <input type="number" class="form-control" v-model="precio" placeholder="Precio" />
-          <label for="precio">Precio</label>
-        </div>
         <div class="form-floating mb-3">
           <select v-model="idPedido" class="form-select">
             <option v-for="pedido in pedidos" :value="pedido.id" :key="pedido.id">

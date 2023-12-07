@@ -3,6 +3,15 @@ import type { Solicitud } from '@/models/solicitud'
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Producto } from '@/models/producto';
+
+var productos = ref<Producto[]>([])
+async function getProductos() {
+  productos.value = await http.get('productos').then((response) => response.data)
+}
+onMounted(() => {
+  getProductos()
+})
 
 const props = defineProps<{
   ENDPOINT_API: string

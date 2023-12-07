@@ -22,16 +22,30 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/compras',
-      name: 'compras',
+      path: '/carritos',
+      name: 'carritos',
       component: () => import('../views/CompraView.vue'),
       children: [
-        { path: '', component: () => import('../components/compra/CompraList.vue') }
+        { path: '', component: () => import('../components/compra/CompraList.vue') },
         //{ path: 'crear', component: () => import('../components/compra/CompraCreate.vue') },
         // {
         //   path: 'editar/:id',
         //   component: () => import('../components/compra/CompraEdit.vue')
         // }
+      ]
+    },
+    {
+      path: '/compras',
+      name: 'compras',
+      component: () => import('../views/CompraView.vue'),
+      children: [
+        { path: '', component: () => import('../components/compra/CompraList.vue') },
+        { path: 'crear', component: () => import('../components/compra/CompraCreate.vue') },
+         {
+           path: 'editar/:id',
+           component: () => import('../components/compra/CompraEdit.vue')
+         },
+         { path: 'detalles', component: () =>import('../components/compra/CompraDetails.vue')}
       ]
     },
     {
