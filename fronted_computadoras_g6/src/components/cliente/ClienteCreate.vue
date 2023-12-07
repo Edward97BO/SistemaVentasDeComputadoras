@@ -61,7 +61,7 @@ function goBack() {
             class="form-control"
             v-model="nombre"
             placeholder="Nombre"
-            required
+            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="No se Puede Ingresar Números"
           />
           <label for="nombre">Nombre</label>
         </div>
@@ -71,7 +71,7 @@ function goBack() {
             class="form-control"
             v-model="apellidos"
             placeholder="Apellidos"
-            required
+            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="No se Puede Ingresar Números" required 
           />
           <label for="apellidos">Apellidos</label>
         </div>
@@ -88,7 +88,7 @@ function goBack() {
           class="form-control" 
           v-model="telefono" 
           placeholder="Telefono" 
-          required />
+          pattern="[0-9]+" title="No se Puede Ingresar Letras" required  />
           <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating">
