@@ -89,10 +89,10 @@ const scrollToTop = () => {
             <li class="nav-item">
               <div class="mainheader">
                 <div class="dropdown">
-                  <a class="nav-link click-scroll"> Inventario</a>
+                  <a class="nav-link click-scroll"><font-awesome-icon icon="fa fa-microchip" /> Inventario</a>
                   <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
-                    <RouterLink to="/categorias" class="nav-link click-scroll"> Categorías</RouterLink>
-                    <RouterLink to="/productos" class="nav-link click-scroll"> Productos</RouterLink>
+                    <RouterLink to="/categorias" class="nav-link click-scroll"><font-awesome-icon icon="fa fa-list" /> Categorías</RouterLink>
+                    <RouterLink to="/productos" class="nav-link click-scroll"><font-awesome-icon icon="fa fa-computer" /> Productos</RouterLink>
                   </div>
                 </div>
               </div>
