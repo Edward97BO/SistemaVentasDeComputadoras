@@ -3,6 +3,13 @@ import { useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/index'
 const authStore = useAuthStore()
 const location = useRoute()
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Para un desplazamiento suave, si es compatible
+  });
+};
+
 </script>
 
 <template>
@@ -91,7 +98,25 @@ const location = useRoute()
         <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none">Salir</a>
       </div>
     </div>
+    <button class="btn-flotante custom-btn" @click="scrollToTop">
+      <font-awesome-icon icon="fa-solid fa-arrow-up" />
+  </button>
   </nav>
 </template>
 
-<style></style>
+<style>
+.btn-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  background-color: #ff0400;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+  </style>

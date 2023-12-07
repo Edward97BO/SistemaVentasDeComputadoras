@@ -26,7 +26,6 @@ async function toDelete(id: number) {
   }
 }
 
-
 onMounted(() => {
   getProductos()
 })
