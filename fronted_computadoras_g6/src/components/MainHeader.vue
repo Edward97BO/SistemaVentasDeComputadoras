@@ -41,7 +41,6 @@ const location = useRoute()
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
           <!-- <li class="nav-item">
@@ -52,24 +51,23 @@ const location = useRoute()
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
-          </li> -->
-         
+          </li> -->        
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_3">Catálogo</a>
           </li>
-
           <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_4">Promociones</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_5">Black Friday</a>
           </li> -->
-
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_6">Contacto</a>
           </li>
           <slot v-if="authStore.token">
+            <li class="nav-item">
+              <RouterLink to="/categorias" class="nav-link click-scroll">Categorías</RouterLink>
+            </li>
             <li class="nav-item">
               <RouterLink to="/productos" class="nav-link click-scroll">Productos</RouterLink>
             </li>
@@ -83,7 +81,7 @@ const location = useRoute()
               <RouterLink to="/pedidos" class="nav-link click-scroll">Pedidos</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/solicitudes" class="nav-link click-scroll">Solicitudes</RouterLink>
+              <RouterLink to="/solicitudes" class="nav-link click-scroll">Pedidos en Línea</RouterLink>
             </li>
           </slot>
         </ul>
@@ -94,7 +92,6 @@ const location = useRoute()
       </div>
     </div>
   </nav>
-
 </template>
 
 <style></style>

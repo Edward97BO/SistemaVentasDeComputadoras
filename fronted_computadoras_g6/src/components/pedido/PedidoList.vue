@@ -30,7 +30,6 @@ async function toDelete(id: number) {
 onMounted(() => {
   getPedido()
 })
-
 </script>
 
 <template>
@@ -47,7 +46,8 @@ onMounted(() => {
       <div class="col-12">
         <RouterLink to="/pedidos/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />
-          Crear Nuevo</RouterLink>
+          Crear Nuevo</RouterLink
+        >
       </div>
     </div>
 
@@ -59,7 +59,7 @@ onMounted(() => {
             <th scope="col">Código</th>
             <th scope="col">Estado</th>
             <th scope="col">Fecha de Pedido</th>
-            <th scope="col">Id Cliente</th>
+            <th scope="col">Cliente</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -69,10 +69,10 @@ onMounted(() => {
             <td>{{ pedido.codigo }}</td>
             <td>{{ pedido.estado }}</td>
             <td>{{ dayjs(pedido.fechaPedido).format('DD/MM/YYYY') }}</td>
-            <td>{{pedido.cliente.nombre +' '+pedido.cliente.apellidos }}</td>
+            <td>{{ pedido.cliente.nombre + ' ' + pedido.cliente.apellidos }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(pedido.id)">
-                <font-awesome-icon icon="fa-solid fa-edit" /> 
+                <font-awesome-icon icon="fa-solid fa-edit" />
               </button>
               <button class="btn text-danger" @click="toDelete(pedido.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />

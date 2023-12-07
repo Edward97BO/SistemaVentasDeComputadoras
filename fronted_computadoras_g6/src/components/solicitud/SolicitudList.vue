@@ -41,7 +41,7 @@ onMounted(() => {
     </nav>
 
     <div class="row">
-      <h2>Lista de Solicitudes</h2>
+      <h2>Lista de Pedidos en Línea</h2>
       <div class="col-12">
         <RouterLink to="/solicitudes/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />
@@ -57,8 +57,8 @@ onMounted(() => {
             <th scope="col">Código</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio</th>
-            <th scope="col">Id Pedido</th>
-            <th scope="col">Id Producto</th>
+            <th scope="col">Código de Pedido</th>
+            <th scope="col">Nombre de Producto</th>
             <th scope="col">Acciones</th>
             
           </tr>
@@ -70,8 +70,8 @@ onMounted(() => {
             <td>{{ solicitud.codigo }}</td>
             <td>{{ solicitud.cantidad }}</td>
             <td>{{ solicitud.precio }}</td>
-            <td>{{ solicitud.idPedido }}</td>
-            <td>{{ solicitud.idProducto }}</td>
+            <td>{{ solicitud.pedido.codigo }}</td>
+            <td>{{ solicitud.producto.nombre }}</td>
 
             
             <td>

@@ -2,6 +2,16 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Categoria } from '@/models/categoria';
+
+var categorias = ref<Categoria[]>([])
+async function getCategorias() {
+  categorias.value = await http.get('categorias').then((response) => response.data)
+}
+
+onMounted(() => {
+  getCategorias()
+})
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -12,7 +22,8 @@ const nombre = ref('')
 const descripcion = ref('')
 const precio = ref('')
 const stock = ref('')
-const categoria = ref('')
+const url = ref('')
+const idCategoria = ref('')
 
 const id = router.currentRoute.value.params['id']
 
@@ -22,8 +33,8 @@ async function editarProducto() {
       nombre: nombre.value,
       descripcion: descripcion.value,
       precio: precio.value,
-      stock: stock.value,
-      categoria: categoria.value
+      url: url.value,
+      idCategoria: idCategoria.value
     })
     .then(() => router.push('/productos'))
 }
@@ -34,7 +45,8 @@ async function getProducto() {
       (descripcion.value = response.data.descripcion),
       (precio.value = response.data.precio),
       (stock.value = response.data.stock),
-      (categoria.value = response.data.categoria)
+      (url.value = response.data.url),
+      (idCategoria.value = response.data.idCategoria)
   })
 }
 
@@ -82,6 +94,7 @@ onMounted(() => {
         <div class="form-floating">
           <input
             type="number"
+            step="0.01"
             class="form-control"
             v-model="precio"
             placeholder="Precio"
@@ -94,18 +107,14 @@ onMounted(() => {
           <label for="stock">Stock</label>
         </div>
         <div class="form-floating">
-          <select
-            type="text"
-            class="form-control"
-            v-model="categoria"
-            placeholder="Categoria"
-            required
-          >
-            <option value="Periferico">Periférico</option>
-            <option value="Silla">Silla Gamer</option>
-            <option value="Hadware">Hadware</option>
-            <option value="Laptop">Laptop</option>
-            <option value="PC">PC de Escritorio</option>
+          <input type="text" class="form-control" v-model="url" placeholder="Url" required />
+          <label for="url">Url Imagen</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select v-model="idCategoria" class="form-select">
+            <option v-for="categoria in categorias" :value="categoria.id" :key="categoria.id">
+              {{ categoria.nombre }}
+            </option>
           </select>
           <label for="categoria">Categoría</label>
         </div>

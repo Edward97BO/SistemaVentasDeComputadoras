@@ -22,6 +22,19 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
+      path: '/categorias',
+      name: 'categorias',
+      component: () => import('../views/CategoriaView.vue'),
+      children: [
+        { path: '', component: () => import('../components/categoria/CategoriaList.vue') },
+        { path: 'crear', component: () => import('../components/categoria/CategoriaCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/categoria/CategoriaEdit.vue')
+        }
+      ]
+    },
+    {
       path: '/productos',
       name: 'productos',
       component: () => import('../views/ProductoView.vue'),
@@ -39,12 +52,12 @@ const router = createRouter({
       name: 'clientes',
       component: () => import('../views/ClienteView.vue'),
       children: [
-      { path: '', component: () => import('../components/cliente/ClienteList.vue') },
-      { path: 'crear', component: () => import('../components/cliente/ClienteCreate.vue') },
-      {
-        path: 'editar/:id',
-        component: () => import('../components/cliente/ClienteEdit.vue')
-      }
+        { path: '', component: () => import('../components/cliente/ClienteList.vue') },
+        { path: 'crear', component: () => import('../components/cliente/ClienteCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/cliente/ClienteEdit.vue')
+        }
       ]
     },
     {
@@ -65,12 +78,12 @@ const router = createRouter({
       name: 'solicitudes',
       component: () => import('../views/SolicitudView.vue'),
       children: [
-      { path: '', component: () => import('../components/solicitud/SolicitudList.vue') },
-      { path: 'crear', component: () => import('../components/solicitud/SolicitudCreate.vue') },
-      {
-        path: 'editar/:id',
-        component: () => import('../components/solicitud/SolicitudEdit.vue')
-      }
+        { path: '', component: () => import('../components/solicitud/SolicitudList.vue') },
+        { path: 'crear', component: () => import('../components/solicitud/SolicitudCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/solicitud/SolicitudEdit.vue')
+        }
       ]
     },
     {
@@ -78,12 +91,12 @@ const router = createRouter({
       name: 'pedidos',
       component: () => import('../views/PedidoView.vue'),
       children: [
-      { path: '', component: () => import('../components/pedido/PedidoList.vue') },
-      { path: 'crear', component: () => import('../components/pedido/PedidoCreate.vue') },
-      {
-        path: 'editar/:id',
-        component: () => import('../components/pedido/PedidoEdit.vue')
-      }
+        { path: '', component: () => import('../components/pedido/PedidoList.vue') },
+        { path: 'crear', component: () => import('../components/pedido/PedidoCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/pedido/PedidoEdit.vue')
+        }
       ]
     }
   ]

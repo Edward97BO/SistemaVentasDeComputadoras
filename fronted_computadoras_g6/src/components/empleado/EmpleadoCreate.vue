@@ -54,27 +54,17 @@ function goBack() {
     <div class="row">
       <form @submit.prevent="crearEmpleado">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="usuario" placeholder="Usuario" required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="usuario"
+            placeholder="Usuario"
+            required
+          />
           <label for="usuario">Usuario</label>
         </div>
         <div class="form-floating">
-          <input
-            type="text"
-            class="form-control"
-            v-model="clave"
-            placeholder="Clave"
-            required
-          />
-          <label for="clave">Clave</label>
-        </div>
-        <div class="form-floating">
-          <input
-            type="text"
-            class="form-control"
-            v-model="nombre"
-            placeholder="Nombre"
-            required
-          />
+          <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" required />
           <label for="nombre">Nombre</label>
         </div>
         <div class="form-floating">
@@ -88,40 +78,41 @@ function goBack() {
           <label for="apellidos">Apellidos</label>
         </div>
         <div class="form-floating">
-          <input type="text" 
-          class="form-control" 
-          v-model="email" 
-          placeholder="Email" 
-          required />
+          <input type="text" class="form-control" v-model="email" placeholder="Email" required />
           <label for="email">Email</label>
         </div>
         <div class="form-floating">
-          <input type="text" 
-          class="form-control" 
-          v-model="telefono" 
-          placeholder="Telefono" 
-          required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="telefono"
+            placeholder="Telefono"
+            required
+          />
           <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating">
-          <input type="text" 
-          class="form-control" 
-          v-model="direccion" 
-          placeholder="Direccion" 
-          required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="direccion"
+            placeholder="Direccion"
+            required
+          />
           <label for="direccion">Dirección</label>
         </div>
         <div class="form-floating">
-          <input type="text" 
-          class="form-control" 
-          v-model="puesto" 
-          placeholder="Puesto" 
-          required />
+          <select v-model="puesto" class="form-control" placeholder="Puesto" required>
+            <option>Administrador</option>
+            <option>Ventas</option>
+            <option>Marketing</option>
+          </select>
           <label for="puesto">Puesto</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /></button>
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" />
+          </button>
         </div>
       </form>
     </div>

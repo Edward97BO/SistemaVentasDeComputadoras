@@ -134,11 +134,11 @@ onMounted(() => {
           <label for="direccion">Dirección</label>
         </div>
         <div class="form-floating">
-          <input type="text" 
-          class="form-control" 
-          v-model="puesto" 
-          placeholder="Puesto" 
-          required />
+          <select v-model="puesto" class="form-control" placeholder="Puesto" required>
+            <option>Administrador</option>
+            <option>Ventas</option>
+            <option>Marketing</option>
+          </select>
           <label for="puesto">Puesto</label>
         </div>
         <div class="text-center mt-3">

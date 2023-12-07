@@ -77,7 +77,7 @@
           <h5 class="site-footer-title mb-3">Contáctanos</h5>
 
           <p class="text-white d-flex mb-1">
-            <a href="https://api.whatsapp.com/send?phone=78683665" class="site-footer-link"> +591 78683665 </a>
+            <a href="https://api.whatsapp.com/send?phone=78683665" class="site-footer-link" target="_blank"> +591 78683665 </a>
           </p>
 
           <p class="text-white d-flex">

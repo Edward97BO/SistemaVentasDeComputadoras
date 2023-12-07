@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Producto } from '@/models/producto'
+import type { Categoria } from '@/models/categoria'
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
@@ -9,26 +9,25 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-var productos = ref<Producto[]>([])
+var categorias = ref<Categoria[]>([])
 
-async function getProductos() {
-  productos.value = await http.get(ENDPOINT).then((response) => response.data)
+async function getCategorias() {
+  categorias.value = await http.get(ENDPOINT).then((response) => response.data)
 }
 
 function toEdit(id: number) {
-  router.push(`/productos/editar/${id}`)
+  router.push(`/categorias/editar/${id}`)
 }
 
 async function toDelete(id: number) {
-  var r = confirm('¿Está seguro que se desea eliminar el Producto?')
+  var r = confirm('¿Está seguro que se desea eliminar la Categoría?')
   if (r == true) {
-    await http.delete(`${ENDPOINT}/${id}`).then(() => getProductos())
+    await http.delete(`${ENDPOINT}/${id}`).then(() => getCategorias())
   }
 }
 
-
 onMounted(() => {
-  getProductos()
+  getCategorias()
 })
 </script>
 
@@ -37,14 +36,14 @@ onMounted(() => {
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
-        <li class="breadcrumb-item active" aria-current="page">Productos</li>
+        <li class="breadcrumb-item active" aria-current="page">Categorías</li>
       </ol>
     </nav>
 
     <div class="row">
-      <h2>Lista de Productos</h2>
+      <h2>Lista de Categorías</h2>
       <div class="col-12">
-        <RouterLink to="/productos/crear">
+        <RouterLink to="/categorias/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />
           Crear Nuevo</RouterLink
         >
@@ -57,26 +56,20 @@ onMounted(() => {
           <tr>
             <th scope="col">N°</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Categoría</th>
             <th scope="col">Descripción</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Stock</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(producto, index) in productos.values()" :key="producto.id">
+          <tr v-for="(categoria, index) in categorias.values()" :key="categoria.id">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.categoria.nombre }}</td>
-            <td>{{ producto.descripcion }}</td>
-            <td>{{ producto.precio }}</td>
-            <td>{{ producto.stock }}</td>
+            <td>{{ categoria.nombre }}</td>
+            <td>{{ categoria.descripcion }}</td>
             <td>
-              <button class="btn text-success" @click="toEdit(producto.id)">
+              <button class="btn text-success" @click="toEdit(categoria.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
               </button>
-              <button class="btn text-danger" @click="toDelete(producto.id)">
+              <button class="btn text-danger" @click="toDelete(categoria.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />
               </button>
             </td>
