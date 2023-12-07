@@ -119,7 +119,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
-          <h2 class="mb-4">Catálogo</h2>
+          <h2 class="mb-4">Novedades</h2>
         </div>
 
         <div class="col-lg-5 col-12">
@@ -140,8 +140,8 @@
               </p>
 
               <p>
-                <strong>Precio:</strong>
-                3500, Bs
+                <strong></strong>
+                12 Gen
               </p>
 
               <hr />
@@ -167,8 +167,8 @@
               </p>
 
               <p>
-                <strong>Precio:</strong>
-                1700 Bs
+                <strong></strong>
+                1 año de Garantía
               </p>
 
               <p>
@@ -191,12 +191,12 @@
             <div class="artists-hover">
               <p>
                 <strong>Name:</strong>
-                Teclado Redragon
+                Periféricos
               </p>
 
               <p>
-                <strong>Precio:</strong>
-                1500 Bs
+                <strong>Mouse y Teclados</strong>
+                RGB
               </p>
 
               <p>

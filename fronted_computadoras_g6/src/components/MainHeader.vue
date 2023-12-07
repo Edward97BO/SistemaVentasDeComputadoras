@@ -3,13 +3,13 @@ import { useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/index'
 const authStore = useAuthStore()
 const location = useRoute()
+
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth' // Para un desplazamiento suave, si es compatible
-  });
-};
-
+  })
+}
 </script>
 
 <template>
@@ -58,9 +58,9 @@ const scrollToTop = () => {
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_2">Acerca de</a>
-          </li> -->        
+          </li> -->
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_3">Catálogo</a>
+            <a class="nav-link click-scroll" href="#section_3">Novedades</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_4">Promociones</a>
@@ -73,22 +73,37 @@ const scrollToTop = () => {
           </li>
           <slot v-if="authStore.token">
             <li class="nav-item">
-              <RouterLink to="/categorias" class="nav-link click-scroll">Categorías</RouterLink>
+              <div class="mainheader">
+                <div class="dropdown">
+                  <a class="nav-link click-scroll"> Admin</a>
+                  <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
+                    <RouterLink to="/empleados" class="nav-link click-scroll"> Empleados</RouterLink>
+                    <RouterLink to="/clientes" class="nav-link click-scroll"> Clientes</RouterLink>
+                  </div>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <RouterLink to="/productos" class="nav-link click-scroll">Productos</RouterLink>
+              <div class="mainheader">
+                <div class="dropdown">
+                  <a class="nav-link click-scroll"> Productos</a>
+                  <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
+                    <RouterLink to="/categorias" class="nav-link click-scroll"> Categorías</RouterLink>
+                    <RouterLink to="/productos" class="nav-link click-scroll"> Productos</RouterLink>
+                  </div>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <RouterLink to="/empleados" class="nav-link click-scroll">Empleados</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/clientes" class="nav-link click-scroll">Clientes</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/pedidos" class="nav-link click-scroll">Pedidos</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/solicitudes" class="nav-link click-scroll">Pedidos en Línea</RouterLink>
+              <div class="mainheader">
+                <div class="dropdown">
+                  <a class="nav-link click-scroll"> Mercado</a>
+                  <div class="dropdown-content" :style="'background-color:' + (location.path != '/' ? 'black' : '')">
+                    <RouterLink to="/pedidos" class="nav-link click-scroll"> Pedidos</RouterLink>
+                    <RouterLink to="/solicitudes" class="nav-link click-scroll"> Online</RouterLink>
+                  </div>
+                </div>
+              </div>
             </li>
           </slot>
         </ul>
@@ -100,7 +115,7 @@ const scrollToTop = () => {
     </div>
     <button class="btn-flotante custom-btn" @click="scrollToTop">
       <font-awesome-icon icon="fa-solid fa-arrow-up" />
-  </button>
+    </button>
   </nav>
 </template>
 
@@ -119,4 +134,48 @@ const scrollToTop = () => {
   font-size: 20px;
   cursor: pointer;
 }
-  </style>
+
+/* Estilo para el contenedor principal */
+.mainheader {
+  display: flex;
+  justify-content: flex-end; /* Ajusta la alineación del menú desplegable a la derecha */
+}
+
+/* Estilo para el botón del menú desplegable */
+.dropbtn {
+  background-color: transparent;
+  color: transparent;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilo para el contenido del menú desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Estilo para los elementos del menú desplegable */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Cambia el color del enlace cuando el ratón pasa sobre él */
+.dropdown-content a:hover {
+  background-color: transparent;
+}
+
+/* Muestra el menú desplegable cuando el mouse pasa sobre el botón */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+</style>
